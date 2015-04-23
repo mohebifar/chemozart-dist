@@ -2,14 +2,7 @@
 
 var ob = require('openbabel');
 var _ = require('lodash');
-
-function readJSON(object) {
-  var molecule = ob.Molecule.fromJSON(object);
-
-  var conversion = new ob.Conversion();
-  conversion.setOutFormat('mol2').setInFormat('mol2');
-  return conversion.read(conversion.write(molecule));
-}
+var readJSON = require('./../../lib/read-json');
 
 // Build 3D Coordinates for this molecule
 exports.build = function (req, res) {
